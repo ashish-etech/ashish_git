@@ -200,8 +200,14 @@ app.controller('Ctrl', function($scope) {
             $scope.lastOperation = MULTIPLY;
         }
         else if ($scope.currentOperation == DIVIDE) {
-            $scope.previousValue /= $scope.currentValue;
-            $scope.lastOperation = DIVIDE;
+                if($scope.currentValue==0){
+                    alert("Number can't be divided by zero");
+                    $scope.result= $scope.previousValue;
+                }
+                else{
+                    $scope.previousValue /= $scope.currentValue;
+                    $scope.lastOperation = DIVIDE;
+                }
         }
         else {
             if ($scope.lastOperation) {
